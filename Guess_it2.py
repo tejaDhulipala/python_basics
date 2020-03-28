@@ -31,31 +31,31 @@ start_input = input(
     "computer will show you and it will also give a description to you. "
     "\nPress the number of items you want to have in this game (the maximum is " + str(len(objects)) + ") : ")
 
-while not start_input.isnumeric() or int(start_input) > len(objects):
-    start_input = input("please enter a single number between 1 and " + str(len(objects)) + ": ")
+while not start_input.isnumeric() or int(start_input) > len(objects) or int(start_input) < 1:
+    start_input = input("please enter a single number between 1 and " + str(len(objects)) + "inclusive ")
 start_input = int(start_input)
 
 Player1_score = 0
 Player2_score = 0
-for i in range(start_input):
+for object in objects[:start_input]:
     # Main variable creation
-    Player1_input = input("How much do you think the " + objects[i].object + " costs, player one? " + objects[i].description + " Put your answer as an integer: ")
+    Player1_input = input("How much do you think the " + object.object + " costs, player one? " + object.description + " Put your answer as an integer: ")
     while not Player1_input.isnumeric():
         Player1_input = input("Wrong format: please enter a single number with no spaces or commas ")
     Player1_input = int(Player1_input)
-    Player2_input = input("How much do you think the " + objects[i].object + " costs, player two? " + objects[i].description + " Put your answer as an integer: ")
+    Player2_input = input("How much do you think the " + object.object + " costs, player two? " + object.description + " Put your answer as an integer: ")
     while not Player2_input.isnumeric():
         Player2_input = input("Wrong format: please enter a single number with no spaces or commas: ")
     Player2_input = int(Player2_input)
-    if abs(objects[i].cost - Player1_input) < abs(objects[i].cost - Player2_input):
+    if abs(object.cost - Player1_input) < abs(object.cost - Player2_input):
         print("You win this round, player one!")
         Player1_score += 1
-    elif abs(objects[i].cost - Player1_input) > abs(objects[i].cost - Player2_input):
+    elif abs(object.cost - Player1_input) > abs(object.cost - Player2_input):
         print("You win this round, player two!")
         Player2_score += 1
     else:
         print("It's a tie")
-    print("The exact answer " " is $" + str(objects[i].cost) + " USD.")
+    print("The exact answer " " is $" + str(object.cost) + " USD.")
 
 if Player1_score < Player2_score:
     print("You win player two! Congratulations! You got " + str(Player2_score) + " points. Player one, you got " + str(
