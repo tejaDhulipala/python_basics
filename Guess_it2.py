@@ -35,10 +35,9 @@ while not start_input.isnumeric() or int(start_input) > len(objects):
     start_input = input("please enter a single number between 1 and " + str(len(objects)) + ": ")
 start_input = int(start_input)
 
-i = 0
 Player1_score = 0
 Player2_score = 0
-while i < start_input:
+for i in range(start_input):
     # Main variable creation
     Player1_input = input("How much do you think the " + objects[i].object + " costs, player one? " + objects[i].description + " Put your answer as an integer: ")
     while not Player1_input.isnumeric():
@@ -57,7 +56,6 @@ while i < start_input:
     else:
         print("It's a tie")
     print("The exact answer " " is $" + str(objects[i].cost) + " USD.")
-    i = i + 1
 
 if Player1_score < Player2_score:
     print("You win player two! Congratulations! You got " + str(Player2_score) + " points. Player one, you got " + str(
@@ -66,7 +64,3 @@ elif Player2_score < Player1_score:
     print("You win player one! Congratulations! You got " + str(Player1_score) + " points. Player one, you got " + str(Player2_score) + " points")
 elif Player1_score == Player2_score and 0 < Player2_score or 0 < Player1_score:
     print("It is an overall tie! Congratulations to both of you! Both of your scores are five!")
-
-
-
-
